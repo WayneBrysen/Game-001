@@ -1,0 +1,183 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/minigame2d/appraisal_workbench_2d.gd" id="1_wb"]
+[ext_resource type="Script" path="res://scenes/minigame2d/uv_scanner_pad_2d.gd" id="2_pad"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.06, 0.08, 0.13, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.9, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="AppraisalWorkbench2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wb")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.03, 0.06, 0.72)
+
+[node name="CenterPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = -235.0
+offset_right = 430.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="CenterPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 20
+
+[node name="HBox" type="HBoxContainer" parent="CenterPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="LeftCol" type="VBoxContainer" parent="CenterPanel/Margin/HBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BenchTitle" type="Label" parent="CenterPanel/Margin/HBox/LeftCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "2D APPRAISAL WORKBENCH // UV SCANNER"
+
+[node name="UVScannerPad2D" type="Control" parent="CenterPanel/Margin/HBox/LeftCol"]
+custom_minimum_size = Vector2(360, 270)
+layout_mode = 2
+script = ExtResource("2_pad")
+
+[node name="ScannerTools" type="HBoxContainer" parent="CenterPanel/Margin/HBox/LeftCol"]
+layout_mode = 2
+
+[node name="UVToggleBtn" type="Button" parent="CenterPanel/Margin/HBox/LeftCol/ScannerTools"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "UV SCAN: ON [F]"
+
+[node name="ScanResultLabel" type="Label" parent="CenterPanel/Margin/HBox/LeftCol"]
+custom_minimum_size = Vector2(360, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Move mouse over blueprint with UV [F] active."
+autowrap_mode = 2
+
+[node name="RightCol" type="VBoxContainer" parent="CenterPanel/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="CustomerHeader" type="Label" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.42, 0.78, 1)
+theme_override_font_sizes/font_size = 18
+text = "Patron // Role"
+
+[node name="DialogueLabel" type="Label" parent="CenterPanel/Margin/HBox/RightCol"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 14
+text = "\"Dialogue\""
+autowrap_mode = 2
+
+[node name="Separator1" type="HSeparator" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+
+[node name="ItemTitle" type="Label" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 20
+text = "Item Name"
+
+[node name="ItemMeta" type="Label" parent="CenterPanel/Margin/HBox/RightCol"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.78, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "Meta"
+autowrap_mode = 2
+
+[node name="PriceTitle" type="Label" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "NEGOTIATE PRICE:"
+
+[node name="PriceRow" type="HBoxContainer" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PriceSlider" type="HSlider" parent="CenterPanel/Margin/HBox/RightCol/PriceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 10.0
+max_value = 500.0
+step = 5.0
+value = 100.0
+
+[node name="PriceValueLabel" type="Label" parent="CenterPanel/Margin/HBox/RightCol/PriceRow"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 1, 0.65, 1)
+theme_override_font_sizes/font_size = 18
+text = "100 ¢"
+horizontal_alignment = 2
+
+[node name="MoodLabel" type="Label" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Customer Mood: WILLING"
+
+[node name="Spacer" type="Control" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsRow" type="HBoxContainer" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PrimaryBtn" type="Button" parent="CenterPanel/Margin/HBox/RightCol/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BUY ITEM"
+
+[node name="RejectBtn" type="Button" parent="CenterPanel/Margin/HBox/RightCol/ActionsRow"]
+layout_mode = 2
+text = "REJECT"
+
+[node name="ReportBtn" type="Button" parent="CenterPanel/Margin/HBox/RightCol/ActionsRow"]
+layout_mode = 2
+text = "REPORT"
+
+[node name="BackBtn" type="Button" parent="CenterPanel/Margin/HBox/RightCol"]
+layout_mode = 2
+text = "RETURN TO 3D COUNTER [Tab]"

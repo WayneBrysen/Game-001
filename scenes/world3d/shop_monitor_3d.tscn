@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/world3d/shop_monitor_3d.gd" id="1_mon"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_frame"]
+size = Vector3(2.4, 1.25, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frame"]
+albedo_color = Color(0.08, 0.1, 0.15, 1)
+metallic = 0.65
+roughness = 0.35
+
+[sub_resource type="QuadMesh" id="QuadMesh_screen"]
+size = Vector2(2.2, 1.08)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.04, 0.06, 0.11, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.88, 1, 1)
+
+[node name="ShopMonitor3D" type="Node3D"]
+script = ExtResource("1_mon")
+
+[node name="Bezel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_frame")
+
+[node name="ScreenMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.066)
+mesh = SubResource("QuadMesh_screen")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(512, 256)
+render_target_update_mode = 4
+
+[node name="ScreenRoot" type="PanelContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="Margin" type="MarginContainer" parent="SubViewport/ScreenRoot"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="SubViewport/ScreenRoot/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="SubViewport/ScreenRoot/Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SubViewport/ScreenRoot/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "NEON PAWN // DECK-09"
+
+[node name="StatusPill" type="Label" parent="SubViewport/ScreenRoot/Margin/VBox/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.25, 1)
+theme_override_font_sizes/font_size = 22
+text = "PREP"
+
+[node name="StatsRow" type="HBoxContainer" parent="SubViewport/ScreenRoot/Margin/VBox"]
+layout_mode = 2
+
+[node name="CreditsLabel" type="Label" parent="SubViewport/ScreenRoot/Margin/VBox/StatsRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.78, 0.88, 1)
+theme_override_font_sizes/font_size = 22
+text = "CREDITS:"
+
+[node name="CreditsValue" type="Label" parent="SubViewport/ScreenRoot/Margin/VBox/StatsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.35, 1, 0.65, 1)
+theme_override_font_sizes/font_size = 30
+text = "340 ¢"
+horizontal_alignment = 2
+
+[node name="HeatRow" type="HBoxContainer" parent="SubViewport/ScreenRoot/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeatTitle" type="Label" parent="SubViewport/ScreenRoot/Margin/VBox/HeatRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.68, 1)
+theme_override_font_sizes/font_size = 18
+text = "CORPSEC HEAT"
+
+[node name="HeatBar" type="ProgressBar" parent="SubViewport/ScreenRoot/Margin/VBox/HeatRow"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 12.0
+
+[node name="TickerLabel" type="Label" parent="SubViewport/ScreenRoot/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.88, 0.45, 1)
+theme_override_font_sizes/font_size = 17
+text = "DAY 1 // READY FOR SHIFT"
+clip_text = true

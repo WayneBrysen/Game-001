@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/world3d/shop_world_3d.tscn" id="2_world3d"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://scenes/minigame2d/appraisal_workbench_2d.tscn" id="4_wb2d"]
+[ext_resource type="PackedScene" path="res://scenes/ui/day_summary_modal.tscn" id="5_modal"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_main")
+
+[node name="ShopWorld3D" parent="." instance=ExtResource("2_world3d")]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UILayer" instance=ExtResource("3_hud")]
+
+[node name="AppraisalWorkbench2D" parent="UILayer" instance=ExtResource("4_wb2d")]
+visible = false
+
+[node name="DaySummaryModal" parent="UILayer" instance=ExtResource("5_modal")]
+visible = false

@@ -1,0 +1,26 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot-specific ignores
+*.translation
+
+# Imported textures and samples in .godot/ are already ignored above,
+# keep source assets tracked.
+# Mono / .NET ignores (if added later)
+.mono/
+data_*/
+mono_crash.*.json
+
+# Exported builds & local editor leftovers
+exports/
+build/
+*.exe
+*.pck
+*.zip
+*.log
+*.tmp
+
+# OS generated
+.DS_Store
+Thumbs.db

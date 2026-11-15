@@ -1,0 +1,231 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar"]
+bg_color = Color(0.05, 0.07, 0.12, 0.86)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.82, 0.96, 0.72)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_side"]
+bg_color = Color(0.05, 0.07, 0.12, 0.82)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.25, 0.68, 0.65)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="TopBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 14.0
+offset_top = 12.0
+offset_right = -14.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar")
+
+[node name="Margin" type="MarginContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 6
+
+[node name="HBox" type="HBoxContainer" parent="TopBar/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="DayLabel" type="Label" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "DAY 1 // PREP"
+
+[node name="CreditsLabel" type="Label" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 1, 0.65, 1)
+theme_override_font_sizes/font_size = 15
+text = "CREDITS: 340 ¢ / 2500 ¢"
+
+[node name="RentLabel" type="Label" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.42, 1)
+theme_override_font_sizes/font_size = 15
+text = "RENT: 480 ¢ (2d)"
+
+[node name="HeatLabel" type="Label" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.35, 0.92, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "HEAT: 12%"
+
+[node name="CamBtns" type="HBoxContainer" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Cam1Btn" type="Button" parent="TopBar/Margin/HBox/CamBtns"]
+layout_mode = 2
+text = "[1] Shop"
+
+[node name="Cam2Btn" type="Button" parent="TopBar/Margin/HBox/CamBtns"]
+layout_mode = 2
+text = "[2] Counter"
+
+[node name="Cam3Btn" type="Button" parent="TopBar/Margin/HBox/CamBtns"]
+layout_mode = 2
+text = "[3] Shelves"
+
+[node name="SideStockPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -170.0
+offset_right = 296.0
+offset_bottom = 110.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_side")
+
+[node name="Margin" type="MarginContainer" parent="SideStockPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="SideStockPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FactionLabel" type="Label" parent="SideStockPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.55, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "SCAV 10 | SYN 5 | CORP 0"
+
+[node name="Sep" type="HSeparator" parent="SideStockPanel/Margin/VBox"]
+layout_mode = 2
+
+[node name="StockTitle" type="Label" parent="SideStockPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "SHELF STOCK (3/8)"
+
+[node name="StockScroll" type="ScrollContainer" parent="SideStockPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StockList" type="VBoxContainer" parent="SideStockPanel/Margin/VBox/StockScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="LogPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -356.0
+offset_top = -226.0
+offset_right = -14.0
+offset_bottom = -104.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar")
+
+[node name="Margin" type="MarginContainer" parent="LogPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="LogRichText" type="RichTextLabel" parent="LogPanel/Margin"]
+layout_mode = 2
+bbcode_enabled = true
+scroll_following = true
+
+[node name="BottomActionBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -92.0
+offset_right = -14.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar")
+
+[node name="Margin" type="MarginContainer" parent="BottomActionBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="HBox" type="HBoxContainer" parent="BottomActionBar/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="InfoCol" type="VBoxContainer" parent="BottomActionBar/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="BannerTitle" type="Label" parent="BottomActionBar/Margin/HBox/InfoCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 16
+text = "SHOP CLOSED — PREP PHASE"
+
+[node name="BannerSub" type="Label" parent="BottomActionBar/Margin/HBox/InfoCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84, 0.92, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "Inspect shelves or open shutters."
+
+[node name="ButtonsCol" type="HBoxContainer" parent="BottomActionBar/Margin/HBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PrimaryActionBtn" type="Button" parent="BottomActionBar/Margin/HBox/ButtonsCol"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "OPEN SHOP [E]"
+
+[node name="SecondaryActionBtn" type="Button" parent="BottomActionBar/Margin/HBox/ButtonsCol"]
+visible = false
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "DISMISS"
