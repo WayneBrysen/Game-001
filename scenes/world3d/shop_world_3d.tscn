@@ -47,10 +47,12 @@ roughness = 0.4
 size = Vector3(0.82, 0.04, 0.56)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pad"]
-albedo_color = Color(0.05, 0.12, 0.18, 1)
+albedo_color = Color(0.04, 0.14, 0.22, 1)
 emission_enabled = true
-emission = Color(0, 0.78, 0.96, 1)
-emission_energy_multiplier = 0.7
+emission = Color(0, 0.65, 0.85, 1)
+emission_energy_multiplier = 0.32
+metallic = 0.3
+roughness = 0.35
 
 [sub_resource type="BoxMesh" id="BoxMesh_shelf_frame"]
 size = Vector3(2.2, 2.0, 0.45)
@@ -188,7 +190,7 @@ mesh = SubResource("BoxMesh_neon_bar")
 surface_material_override/0 = SubResource("StandardMaterial3D_neon_pink")
 
 [node name="ShelfUnit" type="Node3D" parent="Architecture"]
-transform = Transform3D(0.900447, 0, -0.434966, 0, 1, 0, 0.434966, 0, 0.900447, -2.55, 0, 0.72)
+transform = Transform3D(-0.886995, 0, 0.461779, 0, 1, 0, -0.461779, 0, -0.886995, -2.55, 0, 0.72)
 
 [node name="ShelfBack" type="MeshInstance3D" parent="Architecture/ShelfUnit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, -0.18)
@@ -215,7 +217,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, 2.55)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06, -0.35)
 
 [node name="ShelfItemsRoot" type="Node3D" parent="."]
-transform = Transform3D(0.900447, 0, -0.434966, 0, 1, 0, 0.434966, 0, 0.900447, -2.55, 0, 0.72)
+transform = Transform3D(-0.886995, 0, 0.461779, 0, 1, 0, -0.461779, 0, -0.886995, -2.55, 0, 0.72)
 
 [node name="CounterInteractArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, -0.35)
@@ -230,7 +232,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 1.2, 3.1)
 shape = SubResource("BoxShape3D_door")
 
 [node name="ShelfInteractArea" type="Area3D" parent="."]
-transform = Transform3D(0.900447, 0, -0.434966, 0, 1, 0, 0.434966, 0, 0.900447, -2.55, 1.05, 0.72)
+transform = Transform3D(-0.886995, 0, 0.461779, 0, 1, 0, -0.461779, 0, -0.886995, -2.55, 1.05, 0.72)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShelfInteractArea"]
 shape = SubResource("BoxShape3D_shelf")

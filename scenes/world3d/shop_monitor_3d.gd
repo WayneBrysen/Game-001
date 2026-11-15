@@ -27,12 +27,9 @@ func _bind_viewport_texture() -> void:
 		return
 	var mat := StandardMaterial3D.new()
 	var tex := sub_viewport.get_texture()
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mat.albedo_texture = tex
-	mat.emission_enabled = true
-	mat.emission = Color(0.75, 0.9, 1.0)
-	mat.emission_energy_multiplier = 0.85
-	mat.emission_texture = tex
-	mat.roughness = 0.2
+	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR
 	screen_mesh.set_surface_override_material(0, mat)
 
 
